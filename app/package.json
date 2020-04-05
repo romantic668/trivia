@@ -23,6 +23,9 @@
     "minimist": "^1.2.0",
     "nodemon": "^1.11.0"
   },
+  "engines": {
+    "node": "6.10.0"
+  },
   "repository": {
     "type": "git",
     "url": "git@csil-git1.cs.surrey.sfu.ca:awesomegroup/final-project.git"
