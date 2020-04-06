@@ -4,7 +4,7 @@
   "description": "",
   "main": "app/src/app.js",
   "scripts": {
-    "start": "cd app && npm start",
+    "start": "cd app && npm install && npm start",
     "nodemon": "node_modules/nodemon/bin/nodemon.js src/app.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd app && npm install"
   },
@@ -29,5 +29,4 @@
     "minimist": "^1.2.0",
     "nodemon": "^1.11.0"
   }
-  
 }
