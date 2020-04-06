@@ -8,20 +8,16 @@
     "nodemon": "node_modules/nodemon/bin/nodemon.js src/app.js"
   },
   "dependencies": {
-    "bcrypt": "^4.0.1",
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
-    "moment": "^2.24.0",
-    "morgan": "^1.10.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "moment": "^2.18.1",
+    "morgan": "^1.7.0",
     "mysql": "^2.13.0",
-    "node-schedule": "^1.3.2",
-    "pg": "^8.0.0",
-    "sequelize": "^3.30.2",
-    "sequelize-cli": "^5.5.1",
-    "socket.io": "^2.3.0",
-    "sqlite3": "^3.1.8"
+    "node-schedule": "^1.2.1",
+    "sequelize": "^3.30.3",
+    "socket.io": "^1.7.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

@@ -251,7 +251,7 @@ module.exports = function (server) {
 					})
 					models.Question.find({
 						order: [
-							Sequelize.fn('RANDOM'),
+							Sequelize.fn('RAND'),
 						]
 					}).then(function (question) {//todo: send questions to client
 
@@ -299,7 +299,7 @@ module.exports = function (server) {
 					gameQuestions.endTime = endTime
 					models.Question.find({
 						order: [
-							Sequelize.fn('RANDOM'),
+							Sequelize.fn('RAND'),
 						]
 					}).then(function (question) {//todo: send questions to client
 
