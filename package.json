@@ -23,7 +23,10 @@
     "sequelize": "^3.30.2",
     "sequelize-cli": "^5.5.1",
     "socket.io": "^2.3.0",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^3.1.8"
+  },
+  "engines": {
+    "node": "6.9.5"
   },
   "devDependencies": {
     "minimist": "^1.2.0",
