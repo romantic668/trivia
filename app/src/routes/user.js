@@ -5,7 +5,7 @@ var path = require('path');
 
 var user = {};
 
-user.doSignup = function (req,res) {
+user.doSignup = function (req, res) {
 	var uname = req.body['username'];
 	var pass = req.body['password'];
 
@@ -36,7 +36,7 @@ user.doSignup = function (req,res) {
 	});
 };
 
-user.doLogin = function(req, res){
+user.doLogin = function (req, res) {
 	var uname = req.body['username'];
 	var pass = req.body['password'];
 
@@ -45,7 +45,7 @@ user.doLogin = function(req, res){
 		where: {
 			username: uname
 		}
-	}).then(function(found){
+	}).then(function (found) {
 		if (found === 1) { //user exists in DB.
 			models.User.findOne({
 				where: {
@@ -57,35 +57,35 @@ user.doLogin = function(req, res){
 					if (res2) {
 						// correct credentials
 
-						var generateKey = function() {
+						var generateKey = function () {
 							var sha = crypto.createHash('sha256');
 							sha.update(Math.random().toString());
 							return sha.digest('hex');
 						};
 						//first, find all previous sessions associated with this user's id
 						// and delete them
-						models.Session.findAll().then(function(){
+						models.Session.findAll().then(function () {
 							return models.Session.destroy({
 								where: {
 									user_id: nextstep.id
 								}
 							})
-						}).then(function (){
-						// now give them only a fresh key
-						models.Session.create({ //generate session key
-							key: generateKey()
-						}).then(function (send_the_response) {
-							send_the_response.setUser(nextstep.id);
-							nextstep.update({
-								lastLoggedIn: send_the_response.createdAt
-							})
-							res.cookie('key', send_the_response.key);
-							res.setHeader("Content-Type", "application/json; charset=UTF-8");
-							res.status(200);
-							res.send(JSON.stringify('/profile')); //redirect
-							console.log("That user is in DB");
+						}).then(function () {
+							// now give them only a fresh key
+							models.Session.create({ //generate session key
+								key: generateKey()
+							}).then(function (send_the_response) {
+								send_the_response.setUser(nextstep.id);
+								nextstep.update({
+									lastLoggedIn: send_the_response.createdAt
+								})
+								res.cookie('key', send_the_response.key);
+								res.setHeader("Content-Type", "application/json; charset=UTF-8");
+								res.status(200);
+								res.send(JSON.stringify('/profile')); //redirect
+								console.log("That user is in DB");
+							});
 						});
-					});
 					} else { //bcrypt fails
 						res.status(401);
 						res.end();
@@ -99,33 +99,33 @@ user.doLogin = function(req, res){
 	});
 };
 
-user.doLogout = function (req,res) {
-	var name= req.body['name'];
+user.doLogout = function (req, res) {
+	var name = req.body['name'];
 	console.log(name)
 	models.User.count({
 		where: {
 			username: name
 		}
-	}).then(function(found){
+	}).then(function (found) {
 		if (found === 1) {
 			models.User.findOne({
 				where: {
 					username: name
 				}
-			}).then(function(user){
-				
-					console.log(req.body)
-					//find session and delete it
-					models.Session.findOne({
-						where: {
-							user_id: user.id
-						}
-					}).then(function (session) {
-						session.destroy()
+			}).then(function (user) {
 
-					});
-				})
-		}else { //user not found
+				console.log(req.body)
+				//find session and delete it
+				models.Session.findOne({
+					where: {
+						user_id: user.id
+					}
+				}).then(function (session) {
+					session.destroy()
+
+				});
+			})
+		} else { //user not found
 			res.status(401);
 			res.end();
 		}

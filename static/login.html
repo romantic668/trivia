@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <meta charset="utf-8">
@@ -8,37 +9,41 @@
   <title>Login to Awesome Game</title>
   <link rel="stylesheet" href="css/custom.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="css/bootswatch.css">
+  <link rel="stylesheet" href="./css/bootswatch.css">
 </head>
+
 <body>
   <!-- Sign-up Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-            <div id="wrapper2">
-              <h2> Sign-up </h2>
-              <span id="errorContent"></span>
-              <div class="form-group">
-               <form id="sign_up" action="/signup" method="post">
+          <div id="wrapper2">
+            <h2> Sign-up </h2>
+            <span id="errorContent"></span>
+            <div class="form-group">
+              <form id="sign_up" action="/signup" method="post">
                 <label>Username</label>
-                <input name="username" type="input" id="unSignup" class="form-control"  placeholder="Enter username">
+                <input name="username" type="input" id="unSignup" class="form-control" placeholder="Enter username">
 
                 <label>Password</label>
-                <input name="password" type="password" id="pwSignup" class="form-control password_show" placeholder="Enter password">
+                <input name="password" type="password" id="pwSignup" class="form-control password_show"
+                  placeholder="Enter password">
 
                 <label>Confirm Password</label>
-                <input type="password" id="pwConfirm" class="form-control password_show" placeholder="Re-enter password">
+                <input type="password" id="pwConfirm" class="form-control password_show"
+                  placeholder="Re-enter password">
                 <small class="form-text text-muted">We'll never share your password with anyone else.</small>
                 <label class="form-check-label" id="passwordCheckbox">
                   <input id="password_show_checkbox" class="form-check-input" type="checkbox"> Show my password
                 </label>
 
-              </div>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
             </div>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
         </div>
 
 
@@ -48,32 +53,33 @@
   <!-- end Sign-up Modal -->
 
   <!-- main login screen -->
-    <div id="wrapper">
-      <h2> Welcome back to Awesome Game! </h2>
-      <span id="errorContent_Login"></span>
+  <div id="wrapper">
+    <h2> Welcome back to Awesome Game! </h2>
+    <span id="errorContent_Login"></span>
 
-      <div class="form-group">
+    <div class="form-group">
       <form id="log_in" action="/login" method="post">
         <label>Username</label>
-        <input name="username" type="input" id="unLogin" class="form-control"  placeholder="Enter username">
+        <input name="username" type="input" id="unLogin" class="form-control" placeholder="Enter username">
 
         <label>Password</label>
         <input name="password" type="password" id="pwLogin" class="form-control" placeholder="Enter password">
 
         <button id="loginPressed" type="submit" class="btn btn-primary">Login</button>
       </form>
-          <br />
-        <small id="newAccount" onclick="open_SignupModal()"class="form-text text-muted" data-toggle="modal" data-target="#signupModal">Don't have an account?</small>
-      </div>
-
-
-      <div id="createdBy">
-        <small class="text-muted">Awesome Game is a project developed
-          by James Araujo, Jay Svoboda, Lin Cong, Twilight Summerland, Hwayoung Lee, Abram Wiebe.
-        </small>
-      </div>
-
+      <br />
+      <small id="newAccount" onclick="open_SignupModal()" class="form-text text-muted" data-toggle="modal"
+        data-target="#signupModal">Don't have an account?</small>
     </div>
+
+
+    <div id="createdBy">
+      <small class="text-muted">Awesome Game is a project developed
+        by James Araujo, Jay Svoboda, Lin Cong, Twilight Summerland, Hwayoung Lee, Abram Wiebe.
+      </small>
+    </div>
+
+  </div>
   <script type="text/javascript" src="js/login.js"></script>
   <script src="https://use.fontawesome.com/fd9dba5260.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

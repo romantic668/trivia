@@ -3,13 +3,13 @@ var path = require('path');
 var Sequelize = require('sequelize');
 
 //TODO move credentials to somewhere less conspicuous
-var sequelize = new Sequelize('gameDB', 'root', 'hello', { dialect: 'mysql' })
+var sequelize = new Sequelize('gameDB', 'root', 'hello', { dialect: 'sqlite', storage: 'game.db' })
 
 var db = {};
 
 fs.readdirSync(__dirname).filter(function (file) {
 	return (file.indexOf('.') !== 0) && (file !== 'index.js');
-}).forEach(function(file) {
+}).forEach(function (file) {
 	var model = sequelize.import(path.join(__dirname, file));
 	db[model.name] = model;
 });

@@ -25,15 +25,15 @@ app.use(morgan('dev'));
 app.get('/api/user', authentication.isAuthenticated, routes.api.getUser);
 app.get('/api/user/friends', authentication.isAuthenticated, routes.api.getUserFriends);
 app.get('/api/user/history', authentication.isAuthenticated, routes.api.getUserGameHistory);
-app.get('/api/lobbyGame/:id',authentication.isAuthenticated, routes.api.getLobbyGame);
-app.get('/api/questions/:id',authentication.isAuthenticated, routes.api.getThisQuestion);
+app.get('/api/lobbyGame/:id', authentication.isAuthenticated, routes.api.getLobbyGame);
+app.get('/api/questions/:id', authentication.isAuthenticated, routes.api.getThisQuestion);
 app.get('/api/games', authentication.isAuthenticated, routes.api.getAllGames);
 app.get('/api/game/current', authentication.isAuthenticated, routes.api.getCurrentGame);
 app.post('/signup', routes.user.doSignup);
 app.post('/login', routes.user.doLogin);
 app.get('/login', routes.user.getLoginPage);
 app.delete('/logout', routes.user.doLogout);
-app.get('/', function (req,res) {
+app.get('/', function (req, res) {
 	res.status(301);
 	res.setHeader('Location', '/login');
 	res.end();
@@ -50,6 +50,7 @@ app.get('/games', authentication.isAuthenticated, function (req, res) {
 app.get('/friends', authentication.isAuthenticated, function (req, res) {
 	res.sendFile(path.resolve('../static/index.html'));
 });
+app.use(express.static(path.resolve('../static/')))
 
 // Start server
 var server = app.listen(PORT, function () {
