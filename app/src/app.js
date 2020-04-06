@@ -11,7 +11,7 @@ var routes = {
 };
 
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());       // to support JSON-encoded bodies
