@@ -4,7 +4,8 @@
   "description": "",
   "main": "app/src/app.js",
   "scripts": {
-    "start": "cd app && npm start",
+    "start": "cd app && npm install && npm start",
+    "dev": "cd app && npm start",
     "nodemon": "node_modules/nodemon/bin/nodemon.js src/app.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd app && npm install"
   },
@@ -26,7 +27,6 @@
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
-    "minimist": "^1.2.0",
-    "nodemon": "^1.11.0"
+    "minimist": "^1.2.0"
   }
 }
