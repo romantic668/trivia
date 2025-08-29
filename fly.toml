@@ -1,22 +1,32 @@
 app = "trivia-late-pine-2248"
+primary_region = "sea"
 
+# 你的 Dockerfile 已经指定了，保持不变
 [build]
   dockerfile = "Dockerfile"
 
-[mounts]
-  source = "data"
-  destination = "/data"
-
 [env]
   NODE_ENV = "production"
+  # 你的应用内部端口。务必让应用监听 0.0.0.0:3000
   PORT = "3000"
 
-[[services]]
+# 新规范：HTTP 服务写在这里，替代 [[services]]
+[http_service]
   internal_port = 3000
-  protocol = "tcp"
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
-  [[services.ports]]
-    handlers = ["tls","http"]
-    port = 443
+  force_https = true
+  auto_stop_machines = true   # 🟢 空闲自动停机
+  auto_start_machines = true  # 🟢 有请求自动启动
+  min_machines_running = 0    # 🟢 允许完全停到 0 台
+  processes = ["app"]
+
+# 磁盘卷（注意：是 [[mounts]]，数组语法）
+[[mounts]]
+  source = "data"
+  destination = "/data"
+  processes = ["app"]
+
+# VM 配置（尽量用 256MB；不够再调 512MB）
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
